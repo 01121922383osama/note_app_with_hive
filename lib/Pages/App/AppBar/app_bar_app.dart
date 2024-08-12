@@ -10,13 +10,13 @@ class AppBarApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: appSize(context, 70, 80, 90).toDouble(),
+      height: appSize(context, 60, 80, 90).toDouble(),
       decoration: const BoxDecoration(
         color: kMainColor,
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: appSize(context, 10, 20, 30).toDouble(),
+          top: appSize(context, 5, 20, 30).toDouble(),
           right: appSize(context, 10, 20, 30).toDouble(),
           left: appSize(context, 10, 20, 30).toDouble(),
         ),
@@ -36,7 +36,8 @@ class AppBarApp extends StatelessWidget {
               height: appSize(context, 30, 40, 50).toDouble(),
               decoration: BoxDecoration(
                 color: Colors.white24,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(
+                    appSize(context, 10, 12, 14).toDouble()),
               ),
               child: icon,
             )

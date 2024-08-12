@@ -8,17 +8,18 @@ class ContainsSplash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             'assets/images/macos-mobile-app-note-taking-ios-ipad-png-icon-summary-download-0d9929b54f32c4557ea5f94d8fa5b228.png',
-            width: appSize(context, 150, 250, 350).toDouble(),
-            height:  appSize(context, 150, 250, 350).toDouble(),
+            width: appSize(context, 100, 250, 350).toDouble(),
+            height: appSize(context, 100, 250, 350).toDouble(),
           ),
-           Text(
+          Text(
             'Note App',
             style: TextStyle(
               color: Colors.white,
-              fontSize:  appSize(context, 25, 35, 45).toDouble(),
+              fontSize: appSize(context, 24, 35, 45).toDouble(),
               fontWeight: FontWeight.bold,
             ),
           )
@@ -27,4 +28,3 @@ class ContainsSplash extends StatelessWidget {
     );
   }
 }
-

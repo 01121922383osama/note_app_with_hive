@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:note_app_sat/Pages/App/AppBar/app_bar_app.dart';
-import 'package:note_app_sat/Pages/App/Text%20Field/custom_text_feild.dart';
 import 'package:note_app_sat/Core/Constant/app_size.dart';
 import 'package:note_app_sat/Core/Constant/color_app.dart';
 import 'package:note_app_sat/Data/Models/data_model.dart';
-
+import 'package:note_app_sat/Pages/App/AppBar/app_bar_app.dart';
+import 'package:note_app_sat/Pages/App/Text%20Field/custom_text_feild.dart';
 
 class ScaffoldTextFeild extends StatelessWidget {
   ScaffoldTextFeild({super.key});
@@ -51,15 +50,15 @@ class ScaffoldTextFeild extends StatelessWidget {
                     );
                   }
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.check,
                   color: Colors.white,
-                  size: 25,
+                  size: appSize(context, 15, 25, 30).toDouble(),
                 ),
               ),
             ),
-             SizedBox(
-              height:appSize(context, 250, 500, 750).toDouble() ,
+            SizedBox(
+              height: appSize(context, 80, 500, 500).toDouble(),
             ),
             Form(
               key: formk,
@@ -72,27 +71,31 @@ class ScaffoldTextFeild extends StatelessWidget {
                     textInputAction: TextInputAction.next,
                     controller: titlecontroller,
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: appSize(context, 10, 20, 30).toDouble(),
                   ),
                   CustomTextFeild(
                     hintText: 'Content',
-                    maxlines: 5,
-                    minlines: 5,
+                    maxlines: appSize(context, 4, 5, 6).toInt(),
+                    minlines: appSize(context, 4, 5, 6).toInt(),
                     textInputAction: TextInputAction.done,
                     controller: contentcontroller,
                   ),
-                   SizedBox(
-                    height: appSize(context, 90, 130, 170).toDouble(),
+                  SizedBox(
+                    height: appSize(context, 60, 130, 150).toDouble(),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left: appSize(context, 50, 100, 150).toDouble(), right: appSize(context, 50, 100, 150).toDouble(),),
+                    padding: EdgeInsets.only(
+                      left: appSize(context, 40, 100, 150).toDouble(),
+                      right: appSize(context, 40, 100, 150).toDouble(),
+                    ),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: appSize(context, 60, 90, 110).toDouble(),
+                      height: appSize(context, 50, 90, 110).toDouble(),
                       decoration: BoxDecoration(
                         color: kMainColor,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(
+                            appSize(context, 10, 12, 16).toDouble()),
                       ),
                       child: TextButton(
                         onPressed: () {
@@ -114,7 +117,7 @@ class ScaffoldTextFeild extends StatelessWidget {
                                     'There is no Data',
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 24,
+                                      fontSize: 18,
                                     ),
                                   ),
                                 ),
@@ -122,12 +125,12 @@ class ScaffoldTextFeild extends StatelessWidget {
                             );
                           }
                         },
-                        child: const Text(
+                        child: Text(
                           'Add',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 24,
+                            fontSize: appSize(context, 18, 24, 28).toDouble(),
                           ),
                         ),
                       ),
