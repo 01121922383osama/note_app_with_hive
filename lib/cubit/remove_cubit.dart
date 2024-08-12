@@ -1,16 +1,22 @@
-import 'package:bloc/bloc.dart';
 
-import 'package:note_app_sat/Models/data_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+
+import 'package:note_app_sat/Data/Models/data_model.dart';
 
 class RemoveCubit extends Cubit<List<DataModel>> {
-  RemoveCubit() : super([]);
+  final Box<DataModel> notesBox;
+  RemoveCubit(this.notesBox) : super([]) {
+    emit(notesBox.values.toList());
+  }
   void removeData(int index) {
-    final removeList = List<DataModel>.from(state)..removeAt(index);
-    emit(removeList);
+    notesBox.deleteAt(index);
+    emit(notesBox.values.toList());
   }
 
   void addNote(DataModel data) {
-    final addData = List<DataModel>.from(state)..add(data);
-    emit(addData);
+    notesBox.add(data);
+
+    emit(notesBox.values.toList());
   }
 }

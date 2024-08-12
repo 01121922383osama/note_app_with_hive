@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:note_app_sat/Data/Models/data_model.dart';
 import 'package:note_app_sat/Splash/Animated%20Splash/scaffold_animated_splash.dart';
 import 'package:note_app_sat/cubit/remove_cubit.dart';
 
-void main() {
-  runApp(const TestNoteApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(DataModelAdapter());
+  final notesbox = await Hive.openBox<DataModel>('notes');
+  runApp(BlocProvider(
+    create: (context) => RemoveCubit(notesbox),
+    child: const TestNoteApp(),
+  ));
 }
 
 class TestNoteApp extends StatelessWidget {
@@ -12,17 +22,14 @@ class TestNoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RemoveCubit(),
-      child: MaterialApp(
-        title: 'Note App',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          fontFamily: 'Pon',
-        ),
-        home: const ScaffoldAnimatedSplash(),
+    return MaterialApp(
+      title: 'Note App',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: 'Pon',
       ),
+      home: const ScaffoldAnimatedSplash(),
     );
   }
 }

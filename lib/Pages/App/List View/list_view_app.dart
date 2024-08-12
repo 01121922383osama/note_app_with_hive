@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app_sat/Models/data_model.dart';
+import 'package:note_app_sat/Core/Constant/app_size.dart';
+import 'package:note_app_sat/Core/Constant/color_app.dart';
+import 'package:note_app_sat/Data/Models/data_model.dart';
 import 'package:note_app_sat/cubit/remove_cubit.dart';
-import 'package:note_app_sat/customs/custom_color.dart';
+
 
 class ListViewApp extends StatelessWidget {
   const ListViewApp({super.key});
@@ -38,11 +40,11 @@ class ListViewApp extends StatelessWidget {
           itemCount: state.length,
           itemBuilder: (context, index) {
             return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              margin:  EdgeInsets.symmetric(horizontal: appSize(context, 10, 20, 30).toDouble(), vertical: 5),
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 color: kMainColor,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(appSize(context, 12, 16, 20).toDouble()),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -56,7 +58,7 @@ class ListViewApp extends StatelessWidget {
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 25),
+                      padding:  EdgeInsets.only(top: appSize(context, 10, 20, 30).toDouble(), bottom: appSize(context, 15, 25, 35).toDouble()),
                       child: Text(
                         state[index].content,
                         style: const TextStyle(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:note_app_sat/customs/custom_color.dart';
+import 'package:note_app_sat/Core/Constant/app_size.dart';
+import 'package:note_app_sat/Core/Constant/color_app.dart';
+
 
 class CustomTextFeild extends StatelessWidget {
   const CustomTextFeild({
@@ -19,7 +21,7 @@ class CustomTextFeild extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding:  EdgeInsets.only(left: appSize(context, 10, 20, 30).toDouble(), right: appSize(context, 10, 20, 30).toDouble()),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

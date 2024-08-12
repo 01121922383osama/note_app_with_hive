@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_app_sat/customs/custom_color.dart';
+import 'package:note_app_sat/Core/Constant/app_size.dart';
+import 'package:note_app_sat/Core/Constant/color_app.dart';
 
 class AppBarApp extends StatelessWidget {
   const AppBarApp({super.key, required this.text, required this.icon});
@@ -9,12 +10,16 @@ class AppBarApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 80,
+      height: appSize(context, 70, 80, 90).toDouble(),
       decoration: const BoxDecoration(
         color: kMainColor,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+        padding: EdgeInsets.only(
+          top: appSize(context, 10, 20, 30).toDouble(),
+          right: appSize(context, 10, 20, 30).toDouble(),
+          left: appSize(context, 10, 20, 30).toDouble(),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -27,8 +32,8 @@ class AppBarApp extends StatelessWidget {
               ),
             ),
             Container(
-              width: 40,
-              height: 40,
+              width: appSize(context, 30, 40, 50).toDouble(),
+              height: appSize(context, 30, 40, 50).toDouble(),
               decoration: BoxDecoration(
                 color: Colors.white24,
                 borderRadius: BorderRadius.circular(12),
