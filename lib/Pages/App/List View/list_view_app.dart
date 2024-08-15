@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app_sat/Models/data_model.dart';
+import 'package:note_app_sat/Core/Constant/app_size.dart';
+import 'package:note_app_sat/Core/Constant/color_app.dart';
+import 'package:note_app_sat/Data/Models/data_model.dart';
 import 'package:note_app_sat/cubit/remove_cubit.dart';
-import 'package:note_app_sat/customs/custom_color.dart';
 
 class ListViewApp extends StatelessWidget {
   const ListViewApp({super.key});
@@ -38,11 +39,14 @@ class ListViewApp extends StatelessWidget {
           itemCount: state.length,
           itemBuilder: (context, index) {
             return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              padding: const EdgeInsets.all(15),
+              margin: EdgeInsets.symmetric(
+                  horizontal: appSize(context, 10, 20, 30).toDouble(),
+                  vertical: 5),
+              padding: EdgeInsets.all(appSize(context, 5, 15, 25).toDouble()),
               decoration: BoxDecoration(
                 color: kMainColor,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(
+                    appSize(context, 12, 16, 20).toDouble()),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -56,7 +60,9 @@ class ListViewApp extends StatelessWidget {
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 25),
+                      padding: EdgeInsets.only(
+                          top: appSize(context, 5, 20, 30).toDouble(),
+                          bottom: appSize(context, 10, 25, 35).toDouble()),
                       child: Text(
                         state[index].content,
                         style: const TextStyle(
@@ -72,19 +78,21 @@ class ListViewApp extends StatelessWidget {
                           builder: (context) => AlertDialog(
                             backgroundColor:
                                 const Color.fromARGB(255, 211, 209, 209),
-                            title: const Text(
+                            title: Text(
                               'Warning!',
                               style: TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 24,
+                                fontSize:
+                                    appSize(context, 18, 24, 22).toDouble(),
                               ),
                             ),
-                            content: const Text(
+                            content: Text(
                               'Are You Sure?',
                               style: TextStyle(
                                 color: Colors.black54,
-                                fontSize: 18,
+                                fontSize:
+                                    appSize(context, 16, 18, 22).toDouble(),
                               ),
                             ),
                             actions: [
@@ -94,18 +102,26 @@ class ListViewApp extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                        elevation: 5,
-                                        shadowColor: Colors.black,
-                                        backgroundColor: kMainColor),
+                                      elevation: 5,
+                                      shadowColor: Colors.black,
+                                      backgroundColor: kMainColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          appSize(context, 10, 12, 14)
+                                              .toDouble(),
+                                        ),
+                                      ),
+                                    ),
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: const Text(
+                                    child: Text(
                                       'No',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18,
+                                        fontSize: appSize(context, 14, 18, 22)
+                                            .toDouble(),
                                       ),
                                     ),
                                   ),
@@ -114,6 +130,12 @@ class ListViewApp extends StatelessWidget {
                                       elevation: 5,
                                       shadowColor: Colors.black,
                                       backgroundColor: Colors.red,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          appSize(context, 10, 12, 14)
+                                              .toDouble(),
+                                        ),
+                                      ),
                                     ),
                                     onPressed: () {
                                       context
@@ -121,12 +143,13 @@ class ListViewApp extends StatelessWidget {
                                           .removeData(index);
                                       Navigator.pop(context);
                                     },
-                                    child: const Text(
+                                    child: Text(
                                       'Yes',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18,
+                                        fontSize: appSize(context, 14, 18, 22)
+                                            .toDouble(),
                                       ),
                                     ),
                                   ),
@@ -136,18 +159,18 @@ class ListViewApp extends StatelessWidget {
                           ),
                         );
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         color: Colors.white,
-                        size: 20,
+                        size: appSize(context, 20, 20, 25).toDouble(),
                         Icons.delete,
                       ),
                     ),
                   ),
                   Text(
                     _formatDate(DateTime.now()),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white70,
-                      fontSize: 16,
+                      fontSize: appSize(context, 12, 16, 20).toDouble(),
                     ),
                   )
                 ],
