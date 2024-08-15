@@ -1,20 +1,16 @@
+import 'package:hive_flutter/adapters.dart';
+
+part 'data_model.g.dart';
+
+@HiveType(typeId: 0)
 class DataModel {
+  @HiveField(1)
   final String title;
+  @HiveField(2)
   final String content;
 
-  DataModel({required this.title, required this.content});
-
-  factory DataModel.fromJson(Map<String, dynamic> json) {
-    return DataModel(
-      title: json['title'],
-      content: json['content'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'title': title,
-      'content': content,
-    };
-  }
+  DataModel({
+    required this.title,
+    required this.content,
+  });
 }

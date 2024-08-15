@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app_sat/App/AppBar/app_bar_app.dart';
+import 'package:note_app_sat/App/Face%20App/search_delegate.dart';
 import 'package:note_app_sat/App/List%20View/list_view_app.dart';
 import 'package:note_app_sat/App/Text%20Field/scaffold_text_feild.dart';
 import 'package:note_app_sat/Models/data_model.dart';
@@ -18,7 +19,12 @@ class ScaffoldFaceApp extends StatelessWidget {
           AppBarApp(
             text: 'Notes',
             icon: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: SearchDelegateWidget(),
+                );
+              },
               icon: const Icon(
                 Icons.search,
                 color: Colors.white,
@@ -26,7 +32,9 @@ class ScaffoldFaceApp extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(child: ListViewApp()),
+          const Expanded(
+            child: ListViewApp(),
+          ),
         ],
       ),
       floatingActionButton: BlocBuilder<RemoveCubit, List<DataModel>>(
